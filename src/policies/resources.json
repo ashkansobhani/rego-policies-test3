@@ -1,0 +1,34 @@
+{
+	"resources":[
+		{
+			"InstanceId":"06fe5a04aa0ce4b32",
+			"PlatformType":"Linux",
+			"IPAddress":"172.31.0.201",
+			"AvailabilityZone":"us-east-2",
+			"Tags":"[{'Function': 'Webserver', 'Name': 'Web Server'}]",
+			"SubnetId":"None",
+			"Subnet":"None",
+			"NetworkInterface":"None"
+		},
+		{
+			"InstanceId":"068b899eb68f70b24",
+			"PlatformType":"Linux",
+			"IPAddress":"172.31.31.152",
+			"AvailabilityZone":"us-east-2",
+			"Tags":"[{'Function': 'DB', 'Name': 'DB'}]",
+			"SubnetId":"None",
+			"Subnet":"None",
+			"NetworkInterface":"None"
+		},
+		{
+			"InstanceId":"0c4cd76161f145677",
+			"PlatformType":"Linux",
+			"IPAddress":"172.31.27.174",
+			"AvailabilityZone":"us-east-2",
+			"Tags":"[{'Function': 'DB', 'Name': 'DB'}]",
+			"SubnetId":"None",
+			"Subnet":"None",
+			"NetworkInterface":"None"
+		}
+	]
+}

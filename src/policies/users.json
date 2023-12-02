@@ -1,0 +1,30 @@
+{
+"users":
+[
+    {
+        "GroupName": "Admins",
+        "UserId": "AIDAQU4JG7CCTMOBEE2QA",
+        "UserName": "Leila"
+    },
+    {
+        "GroupName": "DBAdmins",
+        "UserId": "AIDAQU4JG7CCZG3VH6VGC",
+        "UserName": "Sogand"
+    },
+    {
+        "GroupName": "None",
+        "UserId": "AIDAQU4JG7CCSGGL3FEA6",
+        "UserName": "OktaUser"
+    },
+    {
+        "GroupName": "None",
+        "UserId": "AIDAQU4JG7CCXA2WXJIO6",
+        "UserName": "Shichao"
+    },
+    {
+        "GroupName": "WebAdmins",
+        "UserId": "AIDAQU4JG7CC6CZRUWIZ3",
+        "UserName": "Ashkan"
+    }
+]
+}
