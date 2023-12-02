@@ -4,7 +4,6 @@ import data.NAC.policy_demo.rules
 
 
 allowed[result]{
-    result := input.inputattributes[_]["UserName"]
     attr:=inputattributes[_]
     #Load the user and resource information
     user:=data.users[_]
