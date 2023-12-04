@@ -3,7 +3,7 @@ import data.NAC.policy_demo.rules
 import data.NAC.group_policy_demo.grouprules
 
 test[result]{
-    attr:=inputattributes[_]
+    attr:=input.inputattributes[_]
     #Load the user and resource information
     user:=input.resource.users[_]
     resource:=input.resource.resources[_]
