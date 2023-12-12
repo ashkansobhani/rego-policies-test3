@@ -1,7 +1,7 @@
-package modified_policy
+package NAC.modified_policy
 
-import data.policy_demo.rules
-import data.group_policy_demo.grouprules
+import data.NAC.policy_demo.rules
+import data.NAC.group_policy_demo.grouprules
 import future.keywords.if
 
 

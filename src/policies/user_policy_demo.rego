@@ -1,4 +1,4 @@
-package policy_demo 
+package NAC.policy_demo 
 
 rules:=[
 	{

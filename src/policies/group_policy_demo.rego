@@ -1,4 +1,4 @@
-package group_policy_demo 
+package NAC.group_policy_demo 
 
 grouprules:=[
 	{
