@@ -1,7 +1,8 @@
-package NAC.modified_policy
 
-import data.NAC.policy_demo.rules
-import data.NAC.group_policy_demo.grouprules
+package NAC.policy
+
+import data.policy_demo.rules
+import data.group_policy_demo.grouprules
 import future.keywords.if
 
 
@@ -15,18 +16,24 @@ test[result]{
     attr:=input.inputattributes[_]
     #Load the user and resource information
     user:=input.resource.users[_]
+
     resource:=input.resource.resources
     #Load the information from the resources
     ResourceList:=[resource[j]]
     #==============================================================================================================
     #                Find the matching policies from the "User_Inline" policies and resolve them
     #==============================================================================================================
-    #Load the user inline policies
+    # #Load the user inline policies
     Policy:= rules
 
-    #Find the policy that is assigned to a user that is requesting the access (the access requet comes from input.json)
-    PolicyObject:= [Policy[i] | attr["UserName"]==Policy[i]["Subject"]["Subject"]]
+    # #Find the policy that is assigned to a user that is requesting the access (the access requet comes from input.json)
+    RawPolicyObject:= [Policy[i] | attr["UserName"]==Policy[i]["Subject"]["Subject"]]
 
+    #Check if the condition holds
+    NoCondition:=[RawPolicyObject[raw_i]| not RawPolicyObject[raw_i].Condition]
+    WithCondition:=[RawPolicyObject[i]|RawPolicyObject[i].Condition;check_condition(RawPolicyObject[_].Condition,user)==true]
+    PolicyObject:=array.concat(WithCondition,NoCondition)
+    
     #Find the None elements
     NoneList:=Find_None_Elements(PolicyObject)
 
@@ -39,7 +46,7 @@ test[result]{
 
     #Substitute the resolved elements (This is the object of all matched user inline policies that are resolved)
     NewElements:=Substitute_PolicyFields(PolicyObject,ResElements,AdditionalInfo)
-    # #==============================================================================================================
+    #==============================================================================================================
     # #                Find the matching policies from the "Group_Inline" policies and resolve them
     # #==============================================================================================================
     #Find the user group name
@@ -50,14 +57,19 @@ test[result]{
     GroupPolicy:=grouprules
 
     #Find the group policy that matches the user that has requested access
-    GroupPolicyObject:=[GroupPolicy[lk]|GroupPolicy[lk]["Subject"]["Subject"]==GroupName]
+    RawGroupPolicyObject:=[GroupPolicy[lk]|GroupPolicy[lk]["Subject"]["Subject"]==GroupName]
+
+    #Check if the condition holds
+    GroupNoCondition:=[RawGroupPolicyObject[i]|not RawGroupPolicyObject[i].Condition]
+    GroupWithCondition:=[RawGroupPolicyObject[i]|RawGroupPolicyObject[i].Condition;check_condition(RawGroupPolicyObject[_].Condition,user)==true]
+    GroupPolicyObject:=array.concat(GroupWithCondition,GroupNoCondition)
 
     #Find the None elements in the group inline policies
     GroupNoneList:=Find_None_Elements(GroupPolicyObject)
-
+    
     #Find the values that were Non in the group_inline policy from the resources 
     GroupResElements:=Resolve_Policy(GroupNoneList,ResourceList)
-
+    
     #Find the extra resource information from the resources.json(these values are not assigned in the policy at all)
     GroupAdditionalInfo:=Extract_Info(GroupNoneList,ResourceList)
    
@@ -66,13 +78,43 @@ test[result]{
     # # result:=type_name(policy)
 
     #FIXME:The polishing the result can be improved
+    
     #Polish the result
     PolishNewElements:=[NewElements|HasKey(NewElements,"Meta")==true]
     PolishGroupNewElements:=[GroupNewElements|HasKey(GroupNewElements,"Meta")==true]
     # # PolishGroupNewElements:=[GroupNewElements|GroupNewElements.Meta][0]
     PolishResult:={PolishNewElements,PolishGroupNewElements}
-    result :=PolishResult
+    result_temp :=[PolishResult[res_index]|count(PolishResult[res_index])>0][0]
+    result:=result_temp[0]
 }
+
+#Check condition
+
+check_condition(out, attr) = output_function if {
+	cond := out[_]
+	operator := [key | cond[key]]
+	value := [val | val = cond[operator[0]]]
+	output_function := check_operator(value, attr, operator[0])
+}
+#Check the operator in the condition
+is_StringEqual(operator) if {
+	"StringLike" == operator
+}
+condition_check(val,attr) = eval_result if {
+	left_side := [key | val[0][key]]
+    right_side:=[val[0][key]]
+    eval_result:=evaluate_condition(left_side[0],split(right_side[0],".")[1],attr)
+}
+
+#If the operator is supported call the function check_condition
+check_operator(value, attr, op) = condition_check(value, attr) if {
+	is_StringEqual(op)
+} else = {false}
+
+evaluate_condition(function_left_side,function_right_side,attr)=true if{
+function_left_side==attr[function_right_side]
+}
+
 
 
 #Find the null elements in an object
@@ -113,7 +155,7 @@ Substitute_PolicyFields(policy_obj_sub,Res_Elements,additional_info)=NewList{
 
     #The Meta and subject fields that are return from the policy
     MetaSubject:={"Meta":policy_obj_sub[p_index]["Meta"]|PolicyIndeces[p_index]}
-    
+    # ConditionCaluse:={"Condition":policy_obj_sub[p_index]["Condition"]|PolicyIndeces[p_index]}
     #The object fields from the policy that were not Non (didn't need to be resolved)
     PrevObject:= {third_index:policy_obj_sub[first_index]["Object"][third_index]|PolicyIndeces[first_index];not contain(third_index,Res_Elements)}
     # # PrevObject:={"Index":list| list:={{"ID":id_index, PrevKeys[pre_index]:policy_obj_sub[id_index]["Object"][PrevKeys[pre_index]]} |PolicyIndeces[id_index];PrevKeys[pre_index] }}
@@ -126,7 +168,7 @@ Substitute_PolicyFields(policy_obj_sub,Res_Elements,additional_info)=NewList{
     UserACLObject:=MergeObjects(TempObj,AddObject)
     FinalUserACLObject:={"Object":UserACLObject}
     NewList:=MergeObjects(FinalUserACLObject,MetaSubject)
-    # NewList:=PrevObject
+    # NewList:=MergeObjects(NewList1,ConditionCaluse)
 }
 
 #Check if an object contains a specific key
@@ -178,6 +220,7 @@ Match_user_inline_policy(policy_object,resource)=ACL_dic{
     "ResourceId":policy_object[_]["Object"]["ResourceId"],"VPCId":policy_object[_]["Object"]["VPCId"],"Protocol":policy_object[_]["Object"]["Protocol"], "IPAddress":policy_object_IPaddress[_],"InstanceType":res_object_PlatformType[_], "NetworkInterface":res_object_NetworkInterface[_], "Tags":res_object_Tags[_], "Subnet":res_object_Subnet[_]}}
     ACL_dic:={policy_object[_]["Subject"],new_object_InstanceType}
 }
+
 
 
 

@@ -3,47 +3,164 @@
 		{
 		"UserId":"AIDAQU4JG7CC6CZRUWIZ3",
 		"UserName":"Ashkan",
-		"GroupName":"WebAdmins"
+		"GroupName":"WebAdmins",
+		"Department":"None"
 		},
 		{
 		"UserId":"AIDAQU4JG7CCTMOBEE2QA",
 		"UserName":"Leila",
-		"GroupName":"Admins"
+		"GroupName":"Admins",
+		"Department":"None"
 		},
 		{
 		"UserId":"AIDAQU4JG7CCSGGL3FEA6",
 		"UserName":"OktaUser",
-		"GroupName":"None"
+		"GroupName":"None",
+		"Department":"None"
 		},
 		{
 		"UserId":"AIDAQU4JG7CCXA2WXJIO6",
 		"UserName":"Shichao",
-		"GroupName":"DBAdmins"
+		"GroupName":"DBAdmins",
+		"Department":"None"
 		},
 		{
 		"UserId":"AIDAQU4JG7CCZG3VH6VGC",
 		"UserName":"Sogand",
-		"GroupName":"DBAdmins"
-		},
-		{
-		"UserId":"c14b1510-e0d1-70df-8f16-8d086bebf2b3",
-		"UserName":"leila.rashidi@huawei.com",
-		"GroupName":"None"
-		},
-		{
-		"UserId":"b1eb3520-a0e1-706a-f411-46b36fb57148",
-		"UserName":"shichao.guan1@huawei.com",
-		"GroupName":"DBAdmins"
-		},
-		{
-		"UserId":"411b2580-80c1-701a-6dfd-eeef1580e8ca",
-		"UserName":"ashkan.sobhani@huawei.com",
-		"GroupName":"WebAdmins"
+		"GroupName":"DBAdmins",
+		"Department":"None"
 		},
 		{
 		"UserId":"d16bb560-7081-708c-5b54-7f0350a58a99",
 		"UserName":"sogand.sadrhaghighi@huawei.com",
-		"GroupName":"DBAdmins"
+		"GroupName":"DBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"f1dba5c0-40d1-70d5-bb6e-8310e83cbda0",
+		"UserName":"iela@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
+		},
+		{
+		"UserId":"712bd5e0-10e1-704c-e190-8799beb16267",
+		"UserName":"xingjun@huawei.com",
+		"GroupName":"DBAdmins2",
+		"Department":"None"
+		},
+		{
+		"UserId":"41ebd5f0-2031-7092-5342-1093e32346c5",
+		"UserName":"leo@huawei.com",
+		"GroupName":"FTPAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"f1db25c0-a071-7081-e578-943b784bb671",
+		"UserName":"pan@huawei.com",
+		"GroupName":"VirginiaDBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"712b9570-7001-7026-cb35-5bdb7d833bce",
+		"UserName":"elie@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
+		},
+		{
+		"UserId":"012b5570-a011-7006-5eb5-56c266cfdafb",
+		"UserName":"alice@huawei.com",
+		"GroupName":"MailAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"e1fb2560-5031-7013-71db-0c4eae115dcf",
+		"UserName":"jay@huawei.com",
+		"GroupName":"VirginiaDBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"219b9540-70c1-70e8-079f-92759c942832",
+		"UserName":"haie@huawei.com",
+		"GroupName":"FTPAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"c14b1510-e0d1-70df-8f16-8d086bebf2b3",
+		"UserName":"leila.rashidi@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
+		},
+		{
+		"UserId":"018b9550-2071-70be-00e5-bf2260cbdf86",
+		"UserName":"oliv@huawei.com",
+		"GroupName":"FTPAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"517b5500-b091-709e-5acf-2a3a6ec6e596",
+		"UserName":"may@huawei.com",
+		"GroupName":"FTPAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"f12b85f0-30a1-70c6-03ff-3e0bda3427df",
+		"UserName":"kye@huawei.com",
+		"GroupName":"VirginiaDBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"81abb550-0071-704a-0974-132da927a45e",
+		"UserName":"gand@huawei.com",
+		"GroupName":"FTPAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"b1bb55a0-20d1-7019-40a3-c19ae8385df6",
+		"UserName":"neo@huawei.com",
+		"GroupName":"VirginiaDBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"514be5d0-90f1-70ba-d993-d239865e7d7e",
+		"UserName":"cyte@huawei.com",
+		"GroupName":"VirginiaDBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"71fbf570-7021-7017-a29d-761632903a6b",
+		"UserName":"dan@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
+		},
+		{
+		"UserId":"411b2580-80c1-701a-6dfd-eeef1580e8ca",
+		"UserName":"ashkan.sobhani@huawei.com",
+		"GroupName":"WebAdmins",
+		"Department":"IT"
+		},
+		{
+		"UserId":"b1eb3520-a0e1-706a-f411-46b36fb57148",
+		"UserName":"shichao.guan1@huawei.com",
+		"GroupName":"DBAdmins",
+		"Department":"None"
+		},
+		{
+		"UserId":"216b4570-50d1-704c-c7c3-c5e8d761d956",
+		"UserName":"shichao.guan2@huawei.com",
+		"GroupName":"None",
+		"Department":"HR"
+		},
+		{
+		"UserId":"518bc500-f021-70a2-c781-67a44c6d124c",
+		"UserName":"fang@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
+		},
+		{
+		"UserId":"e13bb580-7021-7022-5f9f-3c1f828e8e90",
+		"UserName":"bob@huawei.com",
+		"GroupName":"None",
+		"Department":"None"
 		}
 	]
 }

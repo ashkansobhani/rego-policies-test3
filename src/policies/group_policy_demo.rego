@@ -5,30 +5,6 @@ grouprules:=[
 		"Meta":{
 			"CloudProvider":"AWS",
 			"Effect":"Allow",
-			"CloudAction":"RunInstances"
-		},
-		"Subject":{
-			"Subject":"WebAdmins"
-		},
-		"Object":{
-			"Service":"ec2",
-			"AvailabilityZone":"us-east-2",
-			"AccountId":"044848052357",
-			"ResourceId":"Default",
-			"VPCId":"None",
-			"Protocol":"None",
-			"NetworkInterface":"None",
-			"SecurityGroups":"1",
-			"Tags":"None",
-			"SubnetId":"None",
-			"Subnet":"None",
-			"InstanceType":"None",
-		}
-	},
-	{
-		"Meta":{
-			"CloudProvider":"AWS",
-			"Effect":"Allow",
 			"CloudAction":"StartSession"
 		},
 		"Subject":{
@@ -38,7 +14,7 @@ grouprules:=[
 			"Service":"ec2",
 			"AvailabilityZone":"us-east-2",
 			"AccountId":"044848052357",
-			"ResourceId":"0c4cd76161f145677",
+			"ResourceId":"0931512a2e9865531",
 			"VPCId":"None",
 			"Protocol":"SSH",
 			"NetworkInterface":"None",
@@ -46,103 +22,10 @@ grouprules:=[
 			"Tags":"None",
 			"SubnetId":"None",
 			"Subnet":"None",
-			"InstanceType":"None",
-		}
-	},
-	{
-		"Meta":{
-			"CloudProvider":"AWS",
-			"Effect":"Allow",
-			"CloudAction":"RunInstances"
+			"InstanceType":"None"
 		},
-		"Subject":{
-			"Subject":"WebAdmins"
-		},
-		"Object":{
-			"Service":"ec2",
-			"AvailabilityZone":"us-east-2",
-			"AccountId":"044848052357",
-			"ResourceId":"Default",
-			"VPCId":"None",
-			"Protocol":"None",
-			"NetworkInterface":"None",
-			"SecurityGroups":"1",
-			"Tags":"None",
-			"SubnetId":"None",
-			"Subnet":"None",
-			"InstanceType":"None",
-		}
-	},
-	{
-		"Meta":{
-			"CloudProvider":"AWS",
-			"Effect":"Allow",
-			"CloudAction":"StartSession"
-		},
-		"Subject":{
-			"Subject":"WebAdmins"
-		},
-		"Object":{
-			"Service":"ec2",
-			"AvailabilityZone":"us-east-2",
-			"AccountId":"044848052357",
-			"ResourceId":"06fe5a04aa0ce4b32",
-			"VPCId":"None",
-			"Protocol":"SSH",
-			"NetworkInterface":"None",
-			"SecurityGroups":"None",
-			"Tags":"{'Function': 'Webserver'}",
-			"SubnetId":"None",
-			"Subnet":"None",
-			"InstanceType":"None",
-		}
-	},
-	{
-		"Meta":{
-			"CloudProvider":"AWS",
-			"Effect":"Deny",
-			"CloudAction":"StartSession"
-		},
-		"Subject":{
-			"Subject":"DBAdmins"
-		},
-		"Object":{
-			"Service":"ec2",
-			"AvailabilityZone":"us-east-2",
-			"AccountId":"044848052357",
-			"ResourceId":"06fe5a04aa0ce4b32",
-			"VPCId":"None",
-			"Protocol":"SSH",
-			"NetworkInterface":"None",
-			"SecurityGroups":"None",
-			"Tags":"{'Function': 'Webserver'}",
-			"SubnetId":"None",
-			"Subnet":"None",
-			"InstanceType":"None",
-		}
-	},
-	{
-		"Meta":{
-			"CloudProvider":"AWS",
-			"Effect":"Allow",
-			"CloudAction":"StartSession"
-		},
-		"Subject":{
-			"Subject":"DBAdmins"
-		},
-		"Object":{
-			"Service":"ec2",
-			"AvailabilityZone":"us-east-2",
-			"AccountId":"044848052357",
-			"ResourceId":"068b899eb68f70b24",
-			"VPCId":"None",
-			"Protocol":"SSH",
-			"NetworkInterface":"None",
-			"SecurityGroups":"None",
-			"Tags":"{'Function': 'DB'}",
-			"SubnetId":"None",
-			"Subnet":"None",
-			"InstanceType":"None",
-		}
+		"Condition":
+			[{"StringLike": {"IT": "User.Department"}}]
 	}
 ]
+
